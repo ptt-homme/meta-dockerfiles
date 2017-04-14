@@ -1,0 +1,28 @@
+file:
+  /home/studiometa/.zshrc:
+    exists: true
+    owner: studiometa
+    group: studiometa
+    filetype: file
+package:
+  curl:
+    installed: true
+    versions:
+    - 7.47.0-1ubuntu2.2
+  git:
+    installed: true
+    versions:
+    - 1:2.7.4-0ubuntu1
+  htop:
+    installed: true
+    versions:
+    - 2.0.1-1ubuntu1
+user:
+  studiometa:
+    exists: true
+    uid: 1000
+    gid: 1000
+    groups:
+    - studiometa
+    home: /home/studiometa
+    shell: /bin/zsh
