@@ -12,6 +12,12 @@ FROM ubuntu:16.04
 
 MAINTAINER Thomas Bailly <thomas@studiometa.fr>
 
+# Install utils packages.
+RUN apt-get update \
+    && apt-get install -y apt-utils curl dialog git htop locale-gen rsync software-properties-common tmux unzip vim zip zsh \
+    	--no-install-recommends \
+	&& rm -rf /var/lib/apt/lists/*
+
 # Change language to French.
 RUN locale-gen fr_FR.UTF-8
 
@@ -22,12 +28,6 @@ ENV LC_ALL fr_FR.UTF-8
 ENV USER studiometa
 ENV HOME "/home/${USER}"
 ENV TERM "xterm-256color"
-
-# Install utils packages.
-RUN apt-get update \
-    && apt-get install -y apt-utils curl dialog git htop rsync software-properties-common tmux unzip vim zip zsh \
-    	--no-install-recommends \
-	&& rm -rf /var/lib/apt/lists/*
 
 # Add Oh My Zsh config.
 COPY src/.zshrc "${HOME}/"
@@ -40,7 +40,5 @@ RUN addgroup --gid 1000 "${USER}" \
 # Install Oh My Zsh.
 RUN git clone git://github.com/robbyrussell/oh-my-zsh.git "${HOME}/.oh-my-zsh" \
 	&& chown -R "${USER}":"${USER}" "${HOME}"
-
-USER studiometa
 
 ENTRYPOINT ["/bin/zsh"]
