@@ -14,7 +14,7 @@ MAINTAINER Thomas Bailly <thomas@studiometa.fr>
 
 # Install utils packages.
 RUN apt-get update \
-    && apt-get install -y apt-utils curl dialog git htop locale-gen rsync software-properties-common tmux unzip vim zip zsh \
+    && apt-get install -y apt-utils curl dialog git htop locales rsync software-properties-common tmux unzip vim zip zsh \
     	--no-install-recommends \
 	&& rm -rf /var/lib/apt/lists/*
 
